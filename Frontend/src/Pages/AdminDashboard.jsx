@@ -43,12 +43,6 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch]   = useState("");
 
-  useEffect(() => {
-    if (!isAuthenticated) { navigate("/login"); return; }
-    if (!isAdmin)          { navigate("/"); return; }
-    loadAll();
-  }, [isAuthenticated, isAdmin]);
-
   const loadAll = useCallback(async () => {
     setLoading(true);
     try {
@@ -68,6 +62,12 @@ function AdminDashboard() {
     } catch(_) {}
     setLoading(false);
   }, [authFetch]);
+
+  useEffect(() => {
+    if (!isAuthenticated) { navigate("/login"); return; }
+    if (!isAdmin)          { navigate("/"); return; }
+    loadAll();
+  }, [isAuthenticated, isAdmin, navigate, loadAll]);
 
   // Toggle user/seller suspend (isApproved toggle)
   async function toggleSuspend(id) {

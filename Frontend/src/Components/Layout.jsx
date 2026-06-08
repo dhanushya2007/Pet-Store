@@ -252,13 +252,13 @@ function Layout({ children }) {
                 </li>
               )}
 
-              {/* My Pets — for standard buyers */}
+              {/* Pending Requests — for standard buyers */}
               {isAuthenticated && !isAdmin && !isSeller && (
                 <li>
                   <NavLink to="/my-pets"
                     className={({isActive})=>isActive?"active":undefined}
                     onClick={()=>setMenuOpen(false)}>
-                    🐾 My Pets
+                    🐾 Pending Requests
                   </NavLink>
                 </li>
               )}

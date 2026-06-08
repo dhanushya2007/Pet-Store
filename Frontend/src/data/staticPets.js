@@ -1,11 +1,5 @@
-import hdLabrador   from "../Assets/Images/hd_labrador.png";
-import hdShorthair  from "../Assets/Images/hd_british_shorthair.png";
-import hdCorgi      from "../Assets/Images/hd_corgi.png";
 import hdPersian    from "../Assets/Images/hd_persian_cat.png";
 import hdGolden     from "../Assets/Images/hd_golden_retriever.png";
-import hdMaltese    from "../Assets/Images/hd_maltese.png";
-import hdBeagle     from "../Assets/Images/hd_beagle.png";
-import hdPomeranian from "../Assets/Images/hd_pomeranian.png";
 
 export const FALLBACK_IMGS = {
   dog: hdGolden,

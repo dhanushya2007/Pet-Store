@@ -26,7 +26,7 @@ router.get('/stats', protect, admin, async (req, res) => {
 // GET /api/admin/users
 router.get('/users', protect, admin, async (req, res) => {
   try {
-    const users = await User.find().select('-password').sort({ createdAt: -1 });
+    const users = await User.find({ role: 'user' }).select('-password').sort({ createdAt: -1 });
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: 'Error fetching users.' });

@@ -17,12 +17,6 @@ const TEAM = [
   { name:"Karthik Raj",    role:"Tech & Product",       img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300", bio:"Building the platform that connects hearts and paws." },
 ];
 
-const VALUES = [
-  { icon:"🐕", title:"Animal Welfare First",  text:"Every decision we make puts the wellbeing of animals first. Health checks, vaccination tracking, and welfare guidelines are mandatory for all listings." },
-  { icon:"🤝", title:"Transparent Community", text:"We verify all sellers and provide a transparent review system so adopters can make informed, confident decisions." },
-  { icon:"🌱", title:"Sustainable Adoption",  text:"We promote adoption over shopping and help reduce pet abandonment by making the process simple and accessible." },
-  { icon:"💚", title:"Lifetime Support",      text:"Our community support doesn't end at adoption. We provide resources, vet connections, and a community for every pet parent." },
-];
 
 /* ── Animated counter ── */
 function Counter({ target }) {

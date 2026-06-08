@@ -41,9 +41,29 @@ async function seed() {
     await User.deleteMany({ email: { $nin: ['bhavi@gmail.com', 'admin@gmail.com', 'dhanu@admin.com', 'adarsha@gmail.com'] } });
     console.log('Cleared old pets, applications, and non-essential users.');
 
-    // 2. Create/Verify Sellers with fixed ObjectIds (matching static pets)
     const salt = await bcrypt.genSalt(10);
     const pwd = await bcrypt.hash('123456', salt);
+    const adminPwd = await bcrypt.hash('password', salt);
+
+    // Create Admin & User accounts if they don't exist
+    const defaultAccounts = [
+      { name: "Dhanu Admin", email: "dhanu@admin.com", password: adminPwd, role: "admin", isApproved: true },
+      { name: "System Admin", email: "admin@gmail.com", password: pwd, role: "admin", isApproved: true },
+      { name: "Bhavi", email: "bhavi@gmail.com", password: pwd, role: "user", isApproved: true }
+    ];
+
+    for (const a of defaultAccounts) {
+      let doc = await User.findOne({ email: a.email });
+      if (!doc) {
+        await User.create(a);
+      } else {
+        doc.role = a.role;
+        doc.isApproved = true;
+        doc.password = a.email === 'dhanu@admin.com' ? adminPwd : pwd;
+        await doc.save();
+      }
+    }
+    console.log('Verified/created admin & user accounts.');
 
     const sellers = [
       { _id: new mongoose.Types.ObjectId("6a26518f80ca145ca06f6f2b"), name: "Paws & Claws Rescue", email: "seller1@test.com", password: pwd, role: "seller", shopName: "Paws & Claws Rescue", isApproved: true },

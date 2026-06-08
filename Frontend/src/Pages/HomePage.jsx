@@ -12,7 +12,6 @@ import hdLabrador    from "../Assets/Images/hd_labrador.png";
 import hdPersian     from "../Assets/Images/hd_persian_cat.png";
 import hdBeagle      from "../Assets/Images/hd_beagle.png";
 import hdPomeranian  from "../Assets/Images/hd_pomeranian.png";
-import pedigree      from "../Assets/Images/pedigree.png";
 import petFood       from "../Assets/Images/pet_food_promo.png";
 
 
