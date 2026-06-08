@@ -1,0 +1,41 @@
+/* ════════════════════════════════════════════════════════════════
+   PetDetail.css — Pet detail page styles
+   Used by: Pages/PetDetail.jsx
+   ════════════════════════════════════════════════════════════════ */
+
+.pet-detail-page { background: var(--bg); padding: 28px 22px 56px; }
+.pet-detail-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.pet-detail-img-wrap { position: relative; }
+.pet-detail-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.pet-detail-img--placeholder { display: grid; place-items: center; font-size: 80px; background: var(--peach); }
+.pet-detail-wish { position: absolute; top: 14px; right: 14px; background: white; border: none; border-radius: var(--radius-full); padding: 7px 14px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-sm); min-height: unset; transition: transform 0.15s; }
+.pet-detail-wish:hover, .pet-detail-wish.wished { transform: scale(1.07); }
+.pet-detail-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.pet-badge-species, .pet-badge-type, .pet-badge-vax { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-full); }
+.pet-badge-species { background: var(--green-soft); color: var(--green); }
+.pet-badge-type    { background: var(--peach); color: var(--orange-dark); }
+.pet-badge-vax     { background: #d5f5e3; color: #1e8449; }
+.pet-detail-name  { font-size: 28px; font-weight: 900; color: var(--green); margin-bottom: 4px; }
+.pet-detail-breed { font-size: 13px; color: var(--muted); margin-bottom: 10px; text-transform: capitalize; }
+.pet-detail-price { font-size: 22px; font-weight: 900; color: var(--orange); margin-bottom: 10px; }
+.pet-detail-desc  { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+.pet-detail-loc   { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.pet-detail-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.btn-cart { background: var(--orange); color: white; border: none; border-radius: var(--radius-sm); padding: 11px 20px; font-weight: 700; font-size: 13px; cursor: pointer; min-height: unset; transition: background 0.2s, transform 0.15s; }
+.btn-cart:hover { background: var(--orange-dark); transform: translateY(-1px); }
+.pet-seller-card { display: flex; align-items: center; gap: 12px; background: var(--green-soft); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 16px; }
+.pet-seller-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--green); color: white; display: grid; place-items: center; font-weight: 800; font-size: 15px; flex-shrink: 0; }
+.pet-seller-name  { font-weight: 700; font-size: 13px; color: var(--green); }
+.pet-seller-email { font-size: 11px; color: var(--muted); }
+.pet-msg-form { background: white; border: 1px solid var(--border-light); border-radius: var(--radius); padding: 16px; }
+.pet-msg-form h4 { font-size: 13px; color: var(--green); font-weight: 700; margin-bottom: 10px; }
+.pet-msg-form textarea { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px; font: inherit; font-size: 13px; resize: vertical; margin-bottom: 8px; }
+.pet-msg-form button { background: var(--green); color: white; border: none; border-radius: var(--radius-sm); padding: 9px 18px; font-weight: 700; font-size: 13px; cursor: pointer; min-height: unset; }
+.pet-msg-success { color: #27ae60; font-weight: 700; font-size: 12px; margin-bottom: 8px; }
+.pet-gallery { display: flex; flex-direction: column; gap: 8px; }
+.pet-gallery-main { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.pet-gallery-thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+.pet-gallery-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, transform 0.15s; }
+.pet-gallery-thumb:hover, .pet-gallery-thumb.active { border-color: var(--green); transform: scale(1.05); }
+
+@media (max-width: 700px) { .pet-detail-inner { grid-template-columns: 1fr; } }

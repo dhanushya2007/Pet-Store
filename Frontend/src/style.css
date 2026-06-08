@@ -1,0 +1,32 @@
+/* ════════════════════════════════════════════════════════════════
+   style.css — Master import file
+   All styles are split into per-component/page CSS files in /styles/
+   ════════════════════════════════════════════════════════════════
+
+   File map:
+   ├── styles/variables.css     → CSS tokens (:root), global resets
+   ├── styles/globals.css       → Buttons, forms, shared utilities
+   ├── styles/Layout.css        → Header, Navbar, Footer, Toast, Modal
+   ├── styles/HomePage.css      → Hero, categories, pet cards, promo, trust
+   ├── styles/Adoption.css      → Adoption page: hero, filters, grid, cards
+   ├── styles/PetDetail.css     → Pet detail page + image gallery
+   ├── styles/Cart.css          → Cart page, qty controls, summary
+   ├── styles/Auth.css          → Login & Signup pages
+   ├── styles/Dashboard.css     → User/Seller/Admin dashboards
+   ├── styles/Application.css   → Adoption request form + seller banner
+   ├── styles/About.css         → About page
+   └── styles/Contact.css       → Contact page
+   ════════════════════════════════════════════════════════════════ */
+
+@import './styles/variables.css';
+@import './styles/globals.css';
+@import './styles/Layout.css';
+@import './styles/HomePage.css';
+@import './styles/Adoption.css';
+@import './styles/PetDetail.css';
+@import './styles/Cart.css';
+@import './styles/Auth.css';
+@import './styles/Dashboard.css';
+@import './styles/Application.css';
+@import './styles/About.css';
+@import './styles/Contact.css';

@@ -1,0 +1,50 @@
+/* ════════════════════════════════════════════════════════════════
+   Cart.css — Cart page, quantity controls, summary
+   Used by: Pages/CartPage.jsx
+   ════════════════════════════════════════════════════════════════ */
+
+.cart-empty-page, .cart-success-page { min-height: calc(100vh - 140px); display: grid; place-items: center; padding: 40px 22px; background: var(--bg); }
+.cart-empty-box, .cart-success-box { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 420px; }
+.cart-success-icon { font-size: 64px; }
+.cart-empty-box h2, .cart-success-box h2 { font-size: 22px; color: var(--green); font-weight: 900; }
+.cart-empty-box p, .cart-success-box p { color: var(--muted); }
+
+.cart-page { background: var(--bg); min-height: calc(100vh - 140px); padding: 32px 0; }
+.cart-page-inner { max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+.cart-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.cart-page-title { font-size: 22px; font-weight: 900; color: var(--green); }
+.cart-item-count { font-size: 13px; color: var(--muted); }
+.cart-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+
+.cart-items-col { display: flex; flex-direction: column; gap: 12px; }
+.cart-item-row { background: white; border: 1px solid var(--border-light); border-radius: var(--radius); padding: 14px 16px; display: flex; align-items: center; gap: 14px; transition: box-shadow 0.2s; }
+.cart-item-row:hover { box-shadow: var(--shadow-sm); }
+.cart-item-icon { font-size: 28px; flex-shrink: 0; }
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-weight: 700; color: var(--green); font-size: 14px; }
+.cart-item-price { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cart-qty-controls { display: flex; align-items: center; gap: 8px; }
+.qty-btn { width: 28px; height: 28px; border: 1.5px solid var(--border); border-radius: 6px; background: white; color: var(--green); font-weight: 800; font-size: 14px; cursor: pointer; display: grid; place-items: center; min-height: unset; padding: 0; transition: all 0.15s; }
+.qty-btn:hover { background: var(--green); color: white; border-color: var(--green); transform: none; }
+.qty-val { font-weight: 700; font-size: 14px; color: var(--text); min-width: 20px; text-align: center; }
+.cart-item-subtotal { font-weight: 800; color: var(--orange); font-size: 15px; min-width: 64px; text-align: right; }
+.cart-remove-btn { background: none; border: none; color: var(--muted); font-size: 14px; cursor: pointer; min-height: unset; padding: 4px 6px; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+.cart-remove-btn:hover { color: #e74c3c; background: #fce8e6; transform: none; }
+.cart-actions-row { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; }
+.btn-clear { font-size: 12px; color: #e74c3c; background: #fce8e6; border: none; border-radius: var(--radius-sm); padding: 8px 14px; cursor: pointer; font-weight: 600; min-height: unset; transition: background 0.15s; }
+.btn-clear:hover { background: #f5c6c0; transform: none; }
+
+.cart-summary-col { position: sticky; top: 100px; }
+.cart-summary-box { background: white; border: 1px solid var(--border-light); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 10px; }
+.cart-summary-title { font-size: 16px; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+.summary-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); }
+.summary-total { font-size: 16px; color: var(--text); font-weight: 800; }
+.free-shipping { color: #27ae60; font-weight: 700; }
+.shipping-note { font-size: 11px; color: var(--orange); font-weight: 600; }
+.summary-divider { border-top: 1px solid var(--border-light); margin: 4px 0; }
+.btn-checkout { background: var(--green); color: white; border: none; border-radius: var(--radius-sm); padding: 12px; font-weight: 800; font-size: 15px; cursor: pointer; width: 100%; min-height: unset; transition: background 0.2s, transform 0.15s; margin-top: 4px; }
+.btn-checkout:hover { background: var(--orange); transform: translateY(-1px); }
+.btn-checkout:disabled { background: var(--muted); transform: none; cursor: not-allowed; }
+.summary-secure { font-size: 11px; color: var(--muted); text-align: center; }
+
+@media (max-width: 768px) { .cart-layout { grid-template-columns: 1fr; } .cart-summary-col { position: static; } }

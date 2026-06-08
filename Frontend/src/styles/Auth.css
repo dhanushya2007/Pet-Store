@@ -1,0 +1,10 @@
+/* ════════════════════════════════════════════════════════════════
+   Auth.css — Login and Signup pages
+   Used by: Pages/Login.jsx, Pages/Signup.jsx
+   ════════════════════════════════════════════════════════════════ */
+
+.auth-page { min-height: calc(100vh - 160px); display: grid; place-items: center; padding: 40px 22px; background: linear-gradient(135deg, #fff8f3 0%, #fde8d4 100%); }
+.auth-card { width: min(100%, 440px); background: white; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-lg); }
+.auth-card h1 { font-size: 26px; color: var(--green); margin-bottom: 4px; }
+.auth-card .lead { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.auth-logo { width: 120px; margin: 0 auto 20px; }

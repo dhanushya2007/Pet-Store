@@ -1,0 +1,267 @@
+/* ════════════════════════════════════════════════════════════════
+   About.css — About page: hero, stats, mission/vision, Why Choose Us, team, CTA
+   Used by: Pages/About.jsx
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Top Banner Image ── */
+.about-top-banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-top-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  animation: bannerZoom 8s ease forwards;
+}
+@keyframes bannerZoom {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
+}
+.about-top-banner-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 700px;
+  animation: fadeUp 0.7s ease both;
+  background: linear-gradient(135deg, rgba(20,20,20,0.62) 0%, rgba(10,10,10,0.52) 100%);
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Add a full dark gradient behind the whole banner for readability */
+.about-top-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.38) 100%);
+  pointer-events: none;
+}
+
+.about-banner-eyebrow {
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.about-banner-title {
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 900;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.about-banner-title span { color: var(--orange); }
+.about-banner-sub {
+  color: rgba(255,255,255,0.88);
+  font-size: 16px;
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+.about-banner-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Hero ── */
+.about-hero { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.about-hero-bg { position: absolute; inset: 0; }
+.about-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.about-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(30,30,30,0.8) 0%, rgba(20,20,20,0.7) 100%); }
+.about-hero-content { position: relative; z-index: 2; text-align: center; padding: 60px 24px; max-width: 700px; animation: fadeUp 0.7s ease both; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform:none; } }
+.about-hero-title { font-size: clamp(32px, 5vw, 54px); font-weight: 900; color: white; line-height: 1.15; margin-bottom: 16px; }
+.about-hero-title span { color: var(--orange); }
+.about-hero-sub { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 28px; }
+.about-hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Stats ── */
+.about-stats-section { background: white; padding: 40px 24px; border-bottom: 1px solid var(--border-light); }
+.about-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+.about-stat-card { text-align: center; padding: 24px 16px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border-light); transition: transform 0.2s; }
+.about-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.about-stat-icon   { font-size: 28px; margin-bottom: 8px; }
+.about-stat-number { font-size: 32px; font-weight: 900; color: var(--green); }
+.about-stat-label  { font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 4px; }
+@media (max-width: 700px) { .about-stats-grid { grid-template-columns: repeat(2,1fr); } }
+
+/* ── Mission & Vision ── */
+.about-mv-section {
+  padding: 80px 24px;
+  background: var(--bg);
+}
+.about-mv-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.about-mv-header h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.about-mv-header h2 .highlight {
+  color: var(--orange);
+}
+.about-mv-header p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.about-mv-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.about-mv-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.about-mv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+.about-mv-card.mission {
+  border-left: 6px solid var(--orange);
+}
+.about-mv-card.vision {
+  border-left: 6px solid #1abc9c;
+}
+.about-mv-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.mv-icon {
+  font-size: 24px;
+}
+.about-mv-card.mission h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--orange);
+}
+.about-mv-card.vision h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1abc9c;
+}
+.about-mv-card p {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ── Why Choose Us ── */
+.about-wcu-section {
+  padding: 80px 24px;
+  background: white;
+}
+.about-wcu-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.about-wcu-header h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.about-wcu-header h2 .highlight {
+  color: var(--orange);
+}
+.about-wcu-header p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.about-wcu-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.about-wcu-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.about-wcu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+.wcu-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.about-wcu-card h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.about-wcu-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Team ── */
+.about-team-section { background: var(--bg); padding: 80px 24px; border-top: 1px solid var(--border-light); }
+.about-team-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.about-team-card { background: white; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); transition: transform 0.25s, box-shadow 0.25s; animation: fadeUp 0.6s ease both; }
+.about-team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.about-team-info { padding: 0; }
+.about-team-name { font-size: 15px; font-weight: 800; color: var(--text); }
+.about-team-role { font-size: 12px; color: var(--orange); font-weight: 700; margin-bottom: 6px; }
+.about-team-bio  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+@media (max-width: 860px) { .about-team-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px)  { .about-team-grid { grid-template-columns: 1fr; } }
+.about-section-header { text-align: center; margin-bottom: 48px; }
+.about-section-header h2 { font-size: 30px; font-weight: 900; color: var(--green); }
+
+/* ── CTA ── */
+.about-cta-section { background: linear-gradient(135deg, var(--soft), var(--orange)); padding: 80px 24px; text-align: center; }
+.about-cta-inner { max-width: 600px; margin: 0 auto; }
+.about-cta-inner h2 { font-size: 32px; font-weight: 900; color: white; margin-bottom: 12px; }
+.about-cta-inner p  { color: rgba(255,255,255,0.9); font-size: 16px; margin-bottom: 28px; }
+.about-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .about-mv-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-wcu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .about-wcu-grid {
+    grid-template-columns: 1fr;
+  }
+}
