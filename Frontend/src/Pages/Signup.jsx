@@ -13,6 +13,7 @@ function Signup() {
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole]         = useState("user");
+  const [agree, setAgree]       = useState(false);
   const [error, setError]       = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -20,6 +21,7 @@ function Signup() {
     e.preventDefault();
     setError("");
     if (!name || !email || !password) { setError("Please fill in all fields."); return; }
+    if (!agree) { setError("You must agree to the Terms & Conditions."); return; }
     setSubmitting(true);
     try {
       const res  = await fetch(`${API_BASE}/api/auth/signup`, {
@@ -73,6 +75,21 @@ function Signup() {
               🛈 As a seller you can list pets for adoption or sale. Your listings require admin approval before going live.
             </p>
           )}
+
+          {/* Terms checkbox */}
+          <div className="form-field" style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12 }}>
+            <input
+              type="checkbox"
+              id="agree"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+              required
+              style={{ width: "auto", cursor: "pointer" }}
+            />
+            <label htmlFor="agree" style={{ fontSize: 13, cursor: "pointer", userSelect: "none" }}>
+              I agree to the <Link to="/terms" target="_blank" style={{ color: "var(--orange)", fontWeight: 600 }}>Terms & Conditions</Link>
+            </label>
+          </div>
 
           <div className="form-actions">
             <button type="submit" disabled={submitting}>
