@@ -8,6 +8,7 @@ router.get('/:sessionId', async (req, res) => {
     const items = await CartItem.find({ sessionId: req.params.sessionId });
     res.json(items);
   } catch (err) {
+    console.error("GET /api/cart/:sessionId error:", err);
     res.status(500).json({ error: 'Error fetching cart.' });
   }
 });

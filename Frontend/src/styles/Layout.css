@@ -3,15 +3,19 @@
    Used by: Components/Layout.jsx
    ════════════════════════════════════════════════════════════════ */
 
-/* ── SITE HEADER ── */
-.site-header {
+/* ── STICKY HEADER & NAV WRAPPER ── */
+.sticky-header-nav-wrapper {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── SITE HEADER ── */
+.site-header {
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
 }
 .header-inner {
   max-width: 1280px;

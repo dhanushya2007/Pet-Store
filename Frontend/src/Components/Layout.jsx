@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import logo from "../Assets/Images/logo.png";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
@@ -133,8 +133,19 @@ function Layout({ children }) {
   const { cartCount, toast } = useCart();
   const { user, isAuthenticated, isAdmin, isSeller, logout, authFetch } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [showAddPet, setShowAddPet] = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const handleFooterClick = (e) => {
+    if (e.target.closest("a")) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   function handleLogout() {
     logout();
@@ -154,8 +165,9 @@ function Layout({ children }) {
       {toast && <div className="cart-toast" role="alert">{toast}</div>}
       {showAddPet && <AddPetModal onClose={() => setShowAddPet(false)} authFetch={authFetch} />}
 
-      {/* ══ HEADER ══════════════════════════════════════════ */}
-      <header className="site-header">
+      <div className="sticky-header-nav-wrapper">
+        {/* ══ HEADER ══════════════════════════════════════════ */}
+        <header className="site-header">
         <div className="header-inner">
 
           {/* Brand */}
@@ -290,12 +302,13 @@ function Layout({ children }) {
           </div>
         </nav>
       )}
+      </div>
 
       {/* ══ PAGE CONTENT ════════════════════════════════════ */}
       {children}
 
       {/* ══ FOOTER ══════════════════════════════════════════ */}
-      <footer className="site-footer">
+      <footer className="site-footer" onClick={handleFooterClick}>
         <div className="footer-inner">
           <div>
             <div className="footer-brand-img">
