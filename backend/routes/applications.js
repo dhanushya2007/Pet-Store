@@ -77,11 +77,31 @@ router.put('/:id/status', protect, async (req, res) => {
     if (!isSeller && !isAdmin) {
       return res.status(403).json({ error: 'Not authorised to update this application.' });
     }
+    const oldStatus = app.status;
     app.status = status;
     if (sellerNote !== undefined) app.sellerNote = sellerNote;
     await app.save();
+
+    // If application is newly approved, create Adoption record and mark pet as adopted
+    if (status === 'approved' && oldStatus !== 'approved' && app.petId) {
+      const Adoption = require('../models/Adoption');
+      const Pet = require('../models/Pet');
+      
+      // Update pet status
+      await Pet.findByIdAndUpdate(app.petId, { status: 'adopted' });
+
+      // Create Adoption document
+      await Adoption.create({
+        petId: app.petId,
+        buyerId: app.userId,
+        sellerId: app.sellerId,
+        applicationId: app._id
+      });
+    }
+
     res.json(app);
   } catch (err) {
+    console.error('Error updating application status:', err);
     res.status(500).json({ error: 'Error updating application status.' });
   }
 });

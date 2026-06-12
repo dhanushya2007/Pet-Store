@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../Components/Layout";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import API_BASE from "../api";
 
 function CartPage() {
+  const navigate = useNavigate();
   const { cart, cartTotal, updateQty, removeFromCart, clearCart, loading } = useCart();
   const { authFetch, isAuthenticated } = useAuth();
   const [ordered, setOrdered] = useState(false);
@@ -150,10 +151,21 @@ function CartPage() {
                   <strong>Total</strong>
                   <strong>${total.toFixed(2)}</strong>
                 </div>
-                <button className="btn-checkout" onClick={handleCheckout} id="checkout-btn"
-                  disabled={loading || submitting}>
-                  {submitting ? "Processing..." : "Checkout →"}
-                </button>
+                {!isAuthenticated && (
+                  <div style={{ marginBottom: 12, padding: "8px 12px", background: "#eef9ff", border: "1px solid #cceeff", borderRadius: 8, color: "#1d70b8", fontSize: "0.85rem", fontWeight: 600 }}>
+                    💡 Please log in to complete your checkout and save the order.
+                  </div>
+                )}
+                {!isAuthenticated ? (
+                  <button className="btn-checkout" onClick={() => navigate("/login")} id="checkout-btn">
+                    🔑 Login to Checkout →
+                  </button>
+                ) : (
+                  <button className="btn-checkout" onClick={handleCheckout} id="checkout-btn"
+                    disabled={loading || submitting}>
+                    {submitting ? "Processing..." : "Checkout →"}
+                  </button>
+                )}
                 {checkoutError && (
                   <div style={{ marginTop: 10, padding: "10px 14px", background: "#fff0f0", border: "1px solid #ffc0c0", borderRadius: 8, color: "#c0392b", fontSize: "0.88rem", fontWeight: 600 }}>
                     ⚠️ {checkoutError}

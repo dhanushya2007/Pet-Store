@@ -109,6 +109,20 @@ router.get('/applications', protect, admin, async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Error fetching applications.' });
   }
+// GET /api/admin/adoptions — all successful adoptions
+router.get('/adoptions', protect, admin, async (req, res) => {
+  try {
+    const Adoption = require('../models/Adoption');
+    const adoptions = await Adoption.find()
+      .populate('petId', 'name species imageUrl price')
+      .populate('buyerId', 'name email')
+      .populate('sellerId', 'name email shopName')
+      .sort({ createdAt: -1 });
+    res.json(adoptions);
+  } catch (err) {
+    console.error('Error fetching adoptions:', err);
+    res.status(500).json({ error: 'Error fetching adoptions.' });
+  }
 });
 
 module.exports = router;
