@@ -59,7 +59,6 @@
   text-decoration: none;
 }
 .btn-outline:hover { background: var(--green); color: white; }
-
 .btn-outline-white {
   display: inline-flex;
   align-items: center;
